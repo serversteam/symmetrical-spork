@@ -37,7 +37,28 @@ The task objectives were as follows:
 
 ## Deploy
 
-TODO: Document how to run
+The Terraform scripts has single file variables.tf to define all the variables used in the scripts. Only this file needs to be changed in order to make any configuration changes.
+
+To Deploy the cluster with terraform, following are required.
+
+Terraform v0.12.16 (Latest at this time)
+
+# AWS access key in .credentials file.
+cat .credentials                                                           
+[default]
+aws_access_key_id = <Add access key id with proper access.>
+aws_secret_access_key = <Secret Access key>
+
+# Provide path of .credentials file in main_indy.tf file.
+shared_credentials_file = "<Provide full path to the .credentials file.>"
+
+# Plan the changes and save the state.
+terraform plan -out infra.state
+
+# Deploy the infrastructure.
+terraform apply
+
+
 
 ## Test the whole setup
 
